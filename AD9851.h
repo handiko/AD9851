@@ -1,5 +1,5 @@
-#ifndef DDS_h
-#define DDS_h
+#ifndef AD9851_h
+#define AD9851_h
 
 #include <limits.h>
 
