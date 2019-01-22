@@ -10,7 +10,25 @@ This library utilizes any Arduino pins to be used as AD9851 control pins. This w
 
 ## Usage
 ```C
+// start off by including the library
+#include <AD9851.h>
 
+// define the GPIO pins to be used
+// you can use any pins you like
+#define RST 8
+#define DATA 9
+#define FQ  10
+#define CLK 11
+
+// Declare a DDS struct variable, globally or locally, depends on the scope
+DDS dds;
+
+// somewhere in your setup() function
+// call the dds_init() function to construct dds_pin structure 
+// and initialize the GPIO for you
+dds = dds_init(RST, DATA, FQ, CLK);
+
+// now you are ready to go!!
 ```
 
 ## Example
