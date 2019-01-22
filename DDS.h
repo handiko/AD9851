@@ -36,7 +36,7 @@ struct DDS dds_init(int rst_pin, int data_pin, int fq_pin, int clk_pin)
   return dds_pin;
 }
 
-void pulse(char pin)
+static void pulse(char pin)
 {
 	digitalWrite(pin, HIGH); 
 	digitalWrite(pin, LOW);
@@ -53,7 +53,7 @@ void dds_reset(DDS dds_in)
 	pulse(dds_in.fq); 
 }
 
-unsigned long calcDataWord(unsigned long in_freq)
+static unsigned long calcDataWord(unsigned long in_freq)
 {
 	unsigned long result = 0;
 
@@ -99,7 +99,7 @@ void writeFreq(DDS dds_in, unsigned long in_freq)
   pulse(dds_in.fq);
 }
 
-void sweepUp(DDS dds_in, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us)
+static void sweepUp(DDS dds_in, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us)
 {
   unsigned int t = (unsigned int)(s_dev / s_step);
   
@@ -113,7 +113,7 @@ void sweepUp(DDS dds_in, unsigned long c_freq, unsigned long s_dev, unsigned lon
   }
 }
 
-void sweepDn(DDS dds_in, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us)
+static void sweepDn(DDS dds_in, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us)
 {
   unsigned int t = (unsigned int)(s_dev / s_step);
   
