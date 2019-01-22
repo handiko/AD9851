@@ -1,0 +1,22 @@
+{
+  "name": "DDS",
+  "version": "0.9.0",
+  "keywords": "DDS,AD9851",
+  "description": "AD9851 DDS module controller library for Arduino (written in C) ",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/handiko/AD9851.git"
+  },
+  "authors":
+  [
+    {
+       "name": "Handiko Gesang",
+       "email": "handikogesang@gmail.com",
+       "url": "https://handiko.github.io/AD9851",
+       "maintainer": true
+    }
+  ],
+  "frameworks": "arduino",
+  "platforms": "*"
+}
