@@ -8,3 +8,11 @@ This library utilizes any Arduino pins to be used as AD9851 control pins. This w
 * Choose the downloaded .zip. (when downloaded, more likely be named **MyGPS-master.zip**)
 * Restart the Arduino IDE
 
+## Usage
+```C
+
+```
+
+## Example
+
+## Contribution
