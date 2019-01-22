@@ -1,37 +1,10 @@
-## Welcome to GitHub Pages
+# AD9851 - DDS Module Controller Library for Arduino (written in C)
+This library utilizes any Arduino pins to be used as AD9851 control pins. This will gives you flexibility to use or to reserve any Arduino pins for other functions. The drawback, the frequency update rate will be somewhat limited to the `digitalWrite()` function's clock cycle.
 
-You can use the [editor on GitHub](https://github.com/handiko/AD9851/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Instalation
+* Download as .zip
+* Open Arduino IDE.
+* From **Sketch**, **Include Library --> Add .ZIP Library...**
+* Choose the downloaded .zip. (when downloaded, more likely be named **MyGPS-master.zip**)
+* Restart the Arduino IDE
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/handiko/AD9851/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
