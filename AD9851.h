@@ -12,12 +12,12 @@ struct DDS {
 
 struct DDS dds_init(int rst_pin, int data_pin, int fq_pin, int clk_pin);
 void pulse(char pin);
-void dds_reset(DDS dds_in);
+void dds_reset(DDS dds);
 unsigned long calcDataWord(unsigned long in_freq);
-void writeFreq(DDS dds_in, unsigned long freq);
-void sweepUp(DDS dds_in, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us);
-void sweepDn(DDS dds_in, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us);
-void sweepTone(DDS dds_in, unsigned long c_freq, unsigned long s_dev, long s_step, unsigned int delay_us);
+void writeFreq(DDS dds, unsigned long freq);
+void sweepUp(DDS dds, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us);
+void sweepDn(DDS dds, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us);
+void sweepTone(DDS dds, unsigned long c_freq, unsigned long s_dev, long s_step, unsigned int delay_us);
 
 struct DDS dds_init(int rst_pin, int data_pin, int fq_pin, int clk_pin)
 {
@@ -42,15 +42,15 @@ static void pulse(char pin)
 	digitalWrite(pin, LOW);
 }
 
-void dds_reset(DDS dds_in)
+void dds_reset(DDS dds)
 {
-	digitalWrite(dds_in.data, LOW);
-	digitalWrite(dds_in.fq, LOW);
-	digitalWrite(dds_in.clk, LOW);
+	digitalWrite(dds.data, LOW);
+	digitalWrite(dds.fq, LOW);
+	digitalWrite(dds.clk, LOW);
 
-	pulse(dds_in.rst); 
-	pulse(dds_in.clk); 
-	pulse(dds_in.fq); 
+	pulse(dds.rst); 
+	pulse(dds.clk); 
+	pulse(dds.fq); 
 }
 
 static unsigned long calcDataWord(unsigned long in_freq)
@@ -72,7 +72,7 @@ static unsigned long calcDataWord(unsigned long in_freq)
 	return result;
 }
 
-void writeFreq(DDS dds_in, unsigned long in_freq)
+void writeFreq(DDS dds, unsigned long in_freq)
 {
   unsigned long data_word;
 
@@ -80,8 +80,8 @@ void writeFreq(DDS dds_in, unsigned long in_freq)
 
   for(int i=0; i<32; i++)
   {
-    digitalWrite(dds_in.data, (data_word & 0x01));
-    pulse(dds_in.clk);
+    digitalWrite(dds.data, (data_word & 0x01));
+    pulse(dds.clk);
 
     data_word >>= 1;
   }
@@ -89,17 +89,17 @@ void writeFreq(DDS dds_in, unsigned long in_freq)
   for(int i=0; i<8; i++)
   {
     if(i<1)
-      digitalWrite(dds_in.data, HIGH);
+      digitalWrite(dds.data, HIGH);
     else
-      digitalWrite(dds_in.data, LOW);
+      digitalWrite(dds.data, LOW);
 
-    pulse(dds_in.clk);
+    pulse(dds.clk);
   }
 
-  pulse(dds_in.fq);
+  pulse(dds.fq);
 }
 
-static void sweepUp(DDS dds_in, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us)
+static void sweepUp(DDS dds, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us)
 {
   unsigned int t = (unsigned int)(s_dev / s_step);
   
@@ -108,12 +108,12 @@ static void sweepUp(DDS dds_in, unsigned long c_freq, unsigned long s_dev, unsig
     
   for(unsigned int i=0; i<t; i++)
   {
-    writeFreq(dds_in, 1UL*c_freq - s_dev/2 + i*s_step);
+    writeFreq(dds, 1UL*c_freq - s_dev/2 + i*s_step);
     delayMicroseconds(delay_us);
   }
 }
 
-static void sweepDn(DDS dds_in, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us)
+static void sweepDn(DDS dds, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us)
 {
   unsigned int t = (unsigned int)(s_dev / s_step);
   
@@ -122,12 +122,12 @@ static void sweepDn(DDS dds_in, unsigned long c_freq, unsigned long s_dev, unsig
     
   for(unsigned int i=0; i<t; i++)
   {
-    writeFreq(dds_in, 1UL*c_freq + s_dev/2 - i*s_step);
+    writeFreq(dds, 1UL*c_freq + s_dev/2 - i*s_step);
     delayMicroseconds(delay_us);
   }
 }
 
-void sweepTone(DDS dds_in, unsigned long c_freq, unsigned long s_dev, long s_step, unsigned int delay_us)
+void sweepTone(DDS dds, unsigned long c_freq, unsigned long s_dev, long s_step, unsigned int delay_us)
 {
   if(s_dev > (2*c_freq))
   	s_dev = 2*c_freq;
@@ -137,7 +137,7 @@ void sweepTone(DDS dds_in, unsigned long c_freq, unsigned long s_dev, long s_ste
     if((s_dev / s_step) > (UINT_MAX - 1))
     	s_step = s_dev / (UINT_MAX - 1);
 
-    sweepUp(dds_in, c_freq, s_dev, s_step, delay_us);
+    sweepUp(dds, c_freq, s_dev, s_step, delay_us);
   }
 
   else if(s_step < 0)
@@ -147,12 +147,12 @@ void sweepTone(DDS dds_in, unsigned long c_freq, unsigned long s_dev, long s_ste
     if((s_dev / s_step) > (UINT_MAX - 1))
     	s_step = s_dev / (UINT_MAX - 1);
 
-    sweepDn(dds_in, c_freq, s_dev, s_step, delay_us);
+    sweepDn(dds, c_freq, s_dev, s_step, delay_us);
   }
   
   else
   {
-    writeFreq(dds_in, 1UL*c_freq);
+    writeFreq(dds, 1UL*c_freq);
   }
 }
 
