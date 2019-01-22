@@ -11,12 +11,12 @@ struct DDS {
 };
 
 struct DDS dds_init(int rst_pin, int data_pin, int fq_pin, int clk_pin);
-void pulse(char pin);
+static void pulse(char pin);
 void dds_reset(DDS dds);
-unsigned long calcDataWord(unsigned long in_freq);
+static unsigned long calcDataWord(unsigned long in_freq);
 void writeFreq(DDS dds, unsigned long freq);
-void sweepUp(DDS dds, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us);
-void sweepDn(DDS dds, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us);
+static void sweepUp(DDS dds, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us);
+static void sweepDn(DDS dds, unsigned long c_freq, unsigned long s_dev, unsigned long s_step, unsigned int delay_us);
 void sweepTone(DDS dds, unsigned long c_freq, unsigned long s_dev, long s_step, unsigned int delay_us);
 
 struct DDS dds_init(int rst_pin, int data_pin, int fq_pin, int clk_pin)
