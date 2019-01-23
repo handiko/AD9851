@@ -25,8 +25,8 @@ DDS dds;
 
 unsigned long cfreq = 35000000UL;
 unsigned long dev = 300000;
-long pos_step = 200;
-long neg_step = -200;
+long pos_step = 100;
+long neg_step = -100;
 unsigned int delay_us = 1;
 
 void setup()
