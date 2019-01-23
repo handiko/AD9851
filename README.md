@@ -36,7 +36,7 @@ dds = dds_init(RST, DATA, FQ, CLK);
 ```C
 // This function will construct dds_pin structure and initialize the GPIO
 // The input arguments should be the dds pins GPIO definition
-// With the exact sequence: RST_pin, DATA_pin, FQ_pin, and CLK_pin respectively
+// with the exact sequence: RST_pin, DATA_pin, FQ_pin, and CLK_pin respectively
 // Call this function first at your setup() and store the return value into your DDS struct variable
 // example: see Example senction below
 struct DDS dds_init(int rst_pin, int data_pin, int fq_pin, int clk_pin);
@@ -59,6 +59,14 @@ void writeFreq(DDS dds, unsigned long freq);
 //                  - sweep deviation in Hertz (unsigned long)
 //                  - sweep step or frequency resolution in Hertz (long)
 //                  - sweep delay in microseconds (unsigned int)
+//
+// To generate sweep-up tone, sweep step must be a positive value, hence,
+// to generate sweep-down tone, sweep step must be a negative value.
+//
+// Example: center freq = 30 MHz, sweep deviation = 100 kHz, sweep step = 100 Hz
+// will results in a sweep-up tone from 29950000 Hz to 30050000 Hz with sweep step of 100 Hz
+// After reaches 30050000 Hz (last step), then it will stay there 
+// unless the sweepTone() function is being called again.
 //
 // REQUIREMENTS: - center frequency must be between DC - 90 MHz
 //               - sweep deviation must be less than the twice of the center frequency value
