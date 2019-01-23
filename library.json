@@ -1,5 +1,5 @@
 {
-  "name": "DDS",
+  "name": "AD9851",
   "version": "0.9.0",
   "keywords": "DDS,AD9851",
   "description": "AD9851 DDS module controller library for Arduino (written in C) ",
