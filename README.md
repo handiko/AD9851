@@ -47,13 +47,25 @@ struct DDS dds_init(int rst_pin, int data_pin, int fq_pin, int clk_pin);
 // and before doing any frequency writing process
 void dds_reset(DDS dds);
 
-// This function will write the desired frequency into AD9851 and output SINE WAVE
+// This function will write the desired frequency into AD9851 and generate SINE WAVE
 // The 6 x Clock multiplier is always enabled (assume that you are using 30 MHz clock)
 // Frequency range: DC - 90 MHz (DC - 60 MHz in practice)
-// Input arguments are DDS struct variable and the desired frequency (unsigned long)
+// Input arguments are DDS struct variable and the desired frequency in Hertz (unsigned long)
 void writeFreq(DDS dds, unsigned long freq);
 
-// 
+// This function will generate Frequency Sweep signal
+// Input arguments: - DDS struct variable
+//                  - center frequency in Hertz (unsigned long)
+//                  - sweep deviation in Hertz (unsigned long)
+//                  - sweep step or frequency resolution in Hertz (long)
+//                  - sweep delay in microseconds (unsigned int)
+//
+// REQUIREMENTS: - center frequency must be between DC - 90 MHz
+//               - sweep deviation must be less than the twice of the center frequency value
+//               - sweep step must be less than the sweep deviation divided by 65535
+//               - delay in microseconds must be less than 65535 
+//
+// FAIL TO MEET THE REQUIREMENTS ABOVE MAY RESULTS IN ABNORMAL OR UNPREDICTABLE BEHAVIOR
 void sweepTone(DDS dds, unsigned long c_freq, unsigned long s_dev, long s_step, unsigned int delay_us);
 ```
 
