@@ -91,7 +91,19 @@ All the three examples are using Arduino to AD9851 GPIO map as follows:
 * AD9851-CLK = Arduino-PIN-11
 
 ### Generate_Tone
+Frequency: 35 MHz
+![](./tone.png)
+
 ### Generate_Sweep
+Center Freq: 35 MHz
+Deviation: 300 kHz
+Frequency Step: + and - 100 Hz
+Delay: 1 uS
+![](./sweep.png)
+
 ### Generate_Random_Hopping
+Minimum Freq: 34.8 MHz
+Maximum Freq: 35.2 MHz
+![](./random_hopping.png)
 
 ## Contribution
