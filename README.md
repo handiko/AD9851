@@ -1,6 +1,7 @@
 # AD9851 - DDS Module Controller Library for Arduino (written in C)
 This library utilizes any Arduino pins to be used as AD9851 control pins. This will gives you flexibility to use or to reserve any Arduino pins for other functions. The drawback, the frequency update rate will be somewhat limited to the `digitalWrite()` function's clock cycle. 
 This library ONLY supports the AD9851 DDS modules which have **30MHz clock**.
+![](./random_hopping.png)
 
 ## Instalation
 * Download as .zip
@@ -95,15 +96,21 @@ Frequency: 35 MHz
 ![](./tone.png)
 
 ### Generate_Sweep
-Center Freq: 35 MHz
-Deviation: 300 kHz
-Frequency Step: + and - 100 Hz
-Delay: 1 uS
+* Center Freq: 35 MHz
+* Deviation: 300 kHz
+* Frequency Step: + and - 100 Hz
+* Delay: 1 uS
 ![](./sweep.png)
 
 ### Generate_Random_Hopping
-Minimum Freq: 34.8 MHz
-Maximum Freq: 35.2 MHz
+* Minimum Freq: 34.8 MHz
+* Maximum Freq: 35.2 MHz
 ![](./random_hopping.png)
 
-## Contribution
+## Contributing
+1. Fork it [https://github.com/handiko/AD9851/fork](https://github.com/handiko/AD9851/fork)
+2. Create new branch (`git checkout -b myfeature`)
+3. Do some editing / create new feature
+4. Commit your works (`git commit -m "Adding some feature blah blah blah.."`)
+5. Push to the branch (`git push -u origin myfeature`)
+6. Create a new Pull Request
