@@ -5,7 +5,7 @@ This library ONLY supports the AD9851 DDS modules which have **30MHz clock**.
 ## Instalation
 * Download as .zip
 * Open Arduino IDE.
-* From **Sketch**, **Include Library --> Add .ZIP Library...**
+* From **Sketch**, **Include Library >> Add .ZIP Library...**
 * Choose the downloaded .zip. (when downloaded, more likely be named **AD9851-master.zip**)
 * Restart the Arduino IDE
 
@@ -78,5 +78,20 @@ void sweepTone(DDS dds, unsigned long c_freq, unsigned long s_dev, long s_step, 
 ```
 
 ## Example
+After installation, open your Arduino IDE. From **File**, click **Examples >> AD9851 >> ...**
+There are three examples included:
+* Generate_Tone
+* Generate_Sweep, and
+* Generate_Random_Hopping
+
+All the three examples are using Arduino to AD9851 GPIO map as follows:
+* AD9851-RST = Arduino-PIN-8
+* AD9851-DATA = Arduino-PIN-9
+* AD9851-FQ = Arduino-PIN-10
+* AD9851-CLK = Arduino-PIN-11
+
+### Generate_Tone
+### Generate_Sweep
+### Generate_Random_Hopping
 
 ## Contribution
