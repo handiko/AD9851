@@ -76,7 +76,7 @@ void writeFreq(DDS dds, unsigned long in_freq)
 {
   unsigned long data_word;
 
-  data_word = calcDataWord(in_freq);
+  data_word = calcDataWord(in_freq * 1UL);
 
   for(int i=0; i<32; i++)
   {
