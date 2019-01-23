@@ -6,7 +6,7 @@ This library ONLY supports the AD9851 DDS modules which have **30MHz clock**.
 * Download as .zip
 * Open Arduino IDE.
 * From **Sketch**, **Include Library --> Add .ZIP Library...**
-* Choose the downloaded .zip. (when downloaded, more likely be named **MyGPS-master.zip**)
+* Choose the downloaded .zip. (when downloaded, more likely be named **AD9851-master.zip**)
 * Restart the Arduino IDE
 
 ## Usage
