@@ -12,7 +12,7 @@ This library ONLY supports the AD9851 DDS modules which have **30MHz clock**.
 
 ## Usage
 ### GPIO Definitions and Initialization
-```C
+```cpp
 // start off by including the library
 #include <AD9851.h>
 
@@ -34,7 +34,7 @@ dds = dds_init(RST, DATA, FQ, CLK);
 // now you are ready to go!!
 ```
 ### Available Functions
-```C
+```cpp
 // This function will construct dds_pin structure and initialize the GPIO
 // The input arguments should be the dds pins GPIO definition
 // with the exact sequence: RST_pin, DATA_pin, FQ_pin, and CLK_pin respectively
