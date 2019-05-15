@@ -39,7 +39,7 @@ dds = dds_init(RST, DATA, FQ, CLK);
 // The input arguments should be the dds pins GPIO definition
 // with the exact sequence: RST_pin, DATA_pin, FQ_pin, and CLK_pin respectively
 // Call this function first at your setup() and store the return value into your DDS struct variable
-// example: see Example senction below
+// example: see Example section below
 struct DDS dds_init(int rst_pin, int data_pin, int fq_pin, int clk_pin);
 
 // This function will reset the AD9851 DDS module
