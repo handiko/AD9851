@@ -6,21 +6,21 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-AD9851		KEYWORD1
-DDS		KEYWORD1
+AD9851	KEYWORD1
+DDS	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-dds_init		KEYWORD2
-pulse			KEYWORD2
-dds_reset		KEYWORD2
-calcDataWord KEYWORD2
-writeFreq	  	KEYWORD2
+dds_init	KEYWORD2
+pulse	KEYWORD2
+dds_reset	KEYWORD2
+calcDataWord	KEYWORD2
+writeFreq	KEYWORD2
 sweepTone	KEYWORD2
-sweepUp		KEYWORD2
-sweepDn		KEYWORD2
+sweepUp	KEYWORD2
+sweepDn	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
